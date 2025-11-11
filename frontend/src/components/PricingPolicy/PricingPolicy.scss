@@ -1,0 +1,82 @@
+:root {
+    --primary-color: #0f0f0f; /* provided */
+    --secondary-color: #ffffff; /* provided */
+    --ternary-color: #666666; /* provided for descriptions */
+    --light-white: #f5f5f5e2;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --muted-bg: rgba(255, 255, 255, 0.02);
+}
+
+.pricing-policy {
+    background: var(--primary-color);
+    color: var(--ternary-color);
+    min-height: 100vh;
+    padding: 32px;
+    padding-top: 160px;
+    header {
+        margin-bottom: 32px;
+    }
+}
+
+
+.policy-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 32px;
+}
+
+.heading,
+.section-title {
+    color: var(--secondary-color);
+}
+
+
+.subheading {
+    color: var(--light-white);
+    opacity: 0.9;
+}
+
+
+.description,
+.milestone-trigger,
+.tiny-note {
+    color: var(--ternary-color);
+}
+
+
+.milestone {
+    background: var(--muted-bg);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 16px;
+}
+
+.milestone-title {
+    color: var(--light-white);
+    opacity: 0.95;
+}
+
+.milestone-percent {
+    color: var(--light-white);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 998px) {
+    .pricing-policy {
+        padding: 32px;
+        padding-top: 96px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pricing-policy {
+        padding: 16px;
+        padding-top: 56px;
+    }
+
+    .policy-card {
+        padding: 24px;
+    }
+}

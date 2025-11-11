@@ -14,8 +14,6 @@ import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
-// import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
-// import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
 
 
 export default function Home() {
