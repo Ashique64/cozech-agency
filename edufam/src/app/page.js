@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Hero/Hero";
 import Process from "@/components/Process/Process";
@@ -15,11 +13,9 @@ import Footer from "@/components/Footer/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
 
-
 export default function Home() {
-  const searchParams = useSearchParams();
-
   useEffect(() => {
+
     const hash = window.location.hash;
     if (hash) {
       const id = hash.replace("#", "");
@@ -30,7 +26,7 @@ export default function Home() {
         }, 50);
       }
     }
-  }, [searchParams]);
+  }, []); 
 
   return (
     <>
