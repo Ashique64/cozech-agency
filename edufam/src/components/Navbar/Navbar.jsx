@@ -63,22 +63,24 @@ const Navbar = () => {
             <nav id="navbar" className={`navbar w-full ${showIcon ? "navbar-hidden" : ""}`}>
                 <div className="navbar-container w-full flex justify-between items-center">
                     <div className="logo">
-                        <img src="/images/socialMedia/svg/Logo-2.svg" alt="Logo" />
+                        <Link href="/">
+                            <img src="/images/socialMedia/svg/Logo-2.svg" alt="Logo" />
+                        </Link>
                     </div>
                     <div className="items flex gap-6">
-                        <Link href="#home">
+                        <Link href="/#home">
                             <span>Home</span>
                         </Link>
-                        <Link href="#services">
+                        <Link href="/#services">
                             <span>Services</span>
                         </Link>
-                        <Link href="#projects">
+                        <Link href="/#projects">
                             <span>Projects</span>
                         </Link>
-                        <Link href="#about">
+                        <Link href="/#about">
                             <span>About Us</span>
                         </Link>
-                        <Link href="#contact">
+                        <Link href="/#contact">
                             <span>Contact Us</span>
                         </Link>
                     </div>
@@ -100,22 +102,24 @@ const Navbar = () => {
             <div className={`overlay-menu ${isMenuOpen ? "overlay-menu-open" : ""}`}>
                 <div className="overlay-content w-full">
                     <div className="overlay-logo">
-                        <img src="/images/socialMedia/svg/Logo-2.svg" alt="Logo" />
+                        <Link href="/" onClick={handleLinkClick}>
+                            <img src="/images/socialMedia/svg/Logo-2.svg" alt="Logo" />
+                        </Link>
                     </div>
                     <div className="overlay-items">
-                        <Link href="#home" onClick={handleLinkClick}>
+                        <Link href="/#home" onClick={handleLinkClick}>
                             <span>Home</span>
                         </Link>
-                        <Link href="#services" onClick={handleLinkClick}>
+                        <Link href="/#services" onClick={handleLinkClick}>
                             <span>Services</span>
                         </Link>
-                        <Link href="#projects" onClick={handleLinkClick}>
+                        <Link href="/#projects" onClick={handleLinkClick}>
                             <span>Projects</span>
                         </Link>
-                        <Link href="#about" onClick={handleLinkClick}>
+                        <Link href="/#about" onClick={handleLinkClick}>
                             <span>About Us</span>
                         </Link>
-                        <Link href="#contact" onClick={handleLinkClick}>
+                        <Link href="/#contact" onClick={handleLinkClick}>
                             <span>Contact Us</span>
                         </Link>
                     </div>

@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import "./CTA.scss";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -78,7 +79,16 @@ const CTA = () => {
             },
             "-=0.3"
         );
-    });
+
+        return () => {
+            try {
+                tl.kill();
+                ScrollTrigger.getAll().forEach((st) => {
+                    if (st && st.kill) st.kill();
+                });
+            } catch (e) {}
+        };
+    }, []);
 
     const scrollToContact = () => {
         const contactSection = document.getElementById("contact");
@@ -98,11 +108,7 @@ const CTA = () => {
     };
 
     return (
-        <section
-            ref={sectionRef}
-            id="cta"
-            className="cta w-full lg:min-h-screen flex flex-col items-center justify-center"
-        >
+        <section ref={sectionRef} id="cta" className="cta w-full lg:min-h-screen flex flex-col items-center justify-center">
             <div className="cta-container flex flex-col md:gap-6 justify-center items-center max-w-7xl w-full mx-auto">
                 <img src="/images/CTA/svg/svgImage-1.svg" alt="Icon" className="left absolute top-0 left-0" />
                 <img src="/images/CTA/svg/svgImage-2.svg" alt="Icon" className="right absolute top-0 right-0" />
@@ -142,6 +148,10 @@ const CTA = () => {
                     </div>
                     <div className="bars flex"></div>
                 </div>
+
+                <Link href="/#contact" className="sr-only" aria-label="Jump to contact section">
+                    Contact (hidden)
+                </Link>
             </div>
         </section>
     );
