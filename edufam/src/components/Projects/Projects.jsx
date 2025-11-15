@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Projects.scss";
@@ -43,18 +42,6 @@ const projectsItems = [
   },
 ];
 
-/**
- * Utility: generate a simple slug from title if you don't have explicit slugs.
- * Keeps characters safe for URLs (lowercase, hyphens).
- */
-const makeSlug = (s) =>
-  String(s)
-    .toLowerCase()
-    .trim()
-    .replace(/['"’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
 const Projects = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -69,11 +56,18 @@ const Projects = () => {
     cardsRef.current = [];
 
     const initialBg =
-      (getComputedStyle(document.documentElement).getPropertyValue("--primary-color") || "").trim() || "#0F0F0F";
+      (
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--primary-color"
+        ) || ""
+      ).trim() || "#0F0F0F";
     const projectsBg = "#192023";
 
     const setBg = (color) => {
-      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
         document.documentElement.style.setProperty("--primary-color", color);
         return;
       }
@@ -158,29 +152,42 @@ const Projects = () => {
       ScrollTrigger.getAll().forEach((st) => {
         try {
           const trig = st?.vars?.trigger;
-          if (trig && sectionRef.current && sectionRef.current.contains(trig)) st.kill();
+          if (trig && sectionRef.current && sectionRef.current.contains(trig))
+            st.kill();
         } catch (e) {}
       });
     };
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="projects w-full min-h-screen flex flex-col items-center justify-center">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="projects w-full min-h-screen flex flex-col items-center justify-center"
+    >
       <div className="projects-container flex flex-col gap-20 justify-center items-center max-w-7xl w-full mx-auto">
         <div className="title-section flex flex-col md:gap-4 text-center">
-          <h2 ref={titleRef} className="title font-semibold" data-text="Crafted with Purpose">
+          <h2
+            ref={titleRef}
+            className="title font-semibold"
+            data-text="Crafted with Purpose"
+          >
             Crafted with <span>Purpose</span>
           </h2>
           <p ref={descriptionRef} className="description">
-            A glimpse into the digital experiences we&apos;ve designed and built.
+            A glimpse into the digital experiences we&apos;ve designed and
+            built.
           </p>
         </div>
 
         <div className="projects-item-section grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 w-full">
           {projectsItems.map((item, index) => {
-            const slug = makeSlug(item.title);
             return (
-              <div className="card-wrapper" key={item.id} ref={(el) => (cardsRef.current[index] = el)}>
+              <div
+                className="card-wrapper"
+                key={item.id}
+                ref={(el) => (cardsRef.current[index] = el)}
+              >
                 <div className="card grid grid-rows-[auto_1fr_auto] overflow-hidden items-start gap-5 lg:gap-10 h-full">
                   <div className="image">
                     <img src={item.imageUrl} alt={item.title} loading="lazy" />
@@ -192,20 +199,17 @@ const Projects = () => {
                   </div>
 
                   <div className="project-buttons w-full flex gap-3 md:gap-6">
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="project-button w-full flex justify-start">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-button w-full flex justify-start"
+                    >
                       <button type="button">
                         <span>view project</span>
                       </button>
                     </a>
                   </div>
-
-                  <Link
-                    href={`/projects/${slug}`}
-                    className="sr-only"
-                    aria-label={`Case study: ${item.title}`}
-                  >
-                    View case study
-                  </Link>
                 </div>
               </div>
             );
