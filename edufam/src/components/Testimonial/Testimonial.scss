@@ -1,0 +1,187 @@
+#testimonial {
+    padding: 80px;
+    .testimonial-container {
+        padding: 0 12px;
+        .title-section {
+            padding: 0 clamp(1rem, 10vw, 150px);
+            h2 {
+                font-size: clamp(28px, 3vw, 48px);
+                font-weight: 600;
+                line-height: 150%;
+                letter-spacing: 0;
+                text-transform: uppercase;
+                position: relative;
+                display: inline-block;
+                background: var(--ternary-color);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                -webkit-text-fill-color: transparent;
+
+                &::before {
+                    content: attr(data-text);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: var(--gradient-accent);
+                    background-size: 200% 100%;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    -webkit-text-fill-color: transparent;
+                    opacity: 0;
+                    transition: opacity 0.4s ease-in-out;
+                    animation: moveGradient 3s linear infinite;
+                    pointer-events: none;
+                }
+
+                span {
+                    background: var(--secondary-color);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    -webkit-text-fill-color: transparent;
+                    position: relative;
+                }
+            }
+            p {
+                color: var(--para-color);
+                font-size: clamp(14px, 1.25vw, 18px);
+                font-weight: 400;
+                line-height: 150%;
+            }
+
+            &:hover {
+                h2 {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .carousal-section {
+            overflow: hidden;
+            position: relative;
+
+            .fade-overlay {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 150px;
+                z-index: 10;
+                pointer-events: none;
+
+                &.fade-left {
+                    left: 0;
+                    background: linear-gradient(to right, var(--primary-color, #000) 0%, transparent 100%);
+                }
+
+                &.fade-right {
+                    right: 0;
+                    background: linear-gradient(to left, var(--primary-color, #000) 0%, transparent 100%);
+                }
+            }
+
+            .items-container {
+                padding-right: 1em;
+                will-change: transform;
+                .card {
+                    flex-shrink: 0 0 auto;
+                    .item-1 {
+                        position: relative;
+                        border-radius: 14px;
+                        background: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 26, 0));
+                        overflow: hidden;
+
+                        .card-bg {
+                            position: absolute;
+                            inset: 0;
+                        }
+                        .content-wrapper {
+                            padding: 30px;
+                            min-width: 420px;
+                            height: 260px;
+                            position: relative;
+                            overflow: hidden;
+
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                inset: 0;
+                                padding: 1px;
+                                border-radius: 14px;
+                                background: linear-gradient(270deg, rgba(226, 112, 31, 1), rgba(219, 198, 62, 1));
+                                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                                -ms-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                                -moz-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                                -webkit-mask-composite: xor;
+                                mask-composite: exclude;
+                                pointer-events: none;
+                            }
+                            .logo {
+                                min-height: 70px;
+                                display: flex;
+                                align-items: center;
+
+                                img {
+                                    display: block;
+                                    width: auto;
+                                }
+                            }
+
+                            .description {
+                                font-size: 16px;
+                                font-weight: 400;
+                                line-height: 150%;
+                                letter-spacing: 0;
+                                overflow: hidden;
+                            }
+                        }
+
+                        .arrow {
+                            position: relative;
+                            left: 14px;
+                        }
+                    }
+
+                    .item-2 {
+                        overflow: hidden;
+                        .profile {
+                            border-radius: 100px;
+                            overflow: hidden;
+                        }
+                        .text-wrapper {
+                            .name {
+                                font-size: 18px;
+                                font-weight: 400;
+                                letter-spacing: 0;
+                                line-height: 150%;
+                            }
+
+                            .company {
+                                font-size: 16px;
+                                font-weight: 300;
+                                color: var(--ternary-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
