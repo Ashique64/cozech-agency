@@ -12,6 +12,7 @@ import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
+import Testimonial from "@/components/Testimonial/Testimonial";
 
 export default function Home() {
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function Home() {
       <Process />
       <Services />
       <Projects />
+      <Testimonial />
       <About />
       <CTA />
       <Contact />

@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable React Compiler
   reactCompiler: true,
 
-  // Add custom headers for specific image types
   async headers() {
     return [
       {
