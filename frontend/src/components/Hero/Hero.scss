@@ -16,6 +16,11 @@
             padding-top: 144px;
             .title-section {
                 text-align: center;
+                pointer-events: none;
+                user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
 
                 .main-title {
                     font-size: clamp(60px, 7.8vw, 120px);
