@@ -48,7 +48,7 @@ const WhatYouGet = () => {
                 <div className="card-section">
                     <div className="card-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {cardData.map((item, index) => (
-                            <div className="card flex flex-col gap-10">
+                            <div key={index} className="card flex flex-col gap-10">
                                 <div className="card-bg">
                                     <img src={item.cardBg} alt="Card Background" />
                                 </div>

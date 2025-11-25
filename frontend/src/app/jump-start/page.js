@@ -4,6 +4,7 @@ import Navbar2 from "@/components/Navbar2/Navbar2";
 import Description from "@/components/JumpStart/Description/Description";
 import WhatYouGet from "@/components/JumpStart/WhatYouGet/WhatYouGet";
 import WhyFree from "@/components/JumpStart/WhyFree/WhyFree";
+import WhoCanApply from "@/components/JumpStart/WhoCanApply/WhoCanApply";
 
 export const metadata = {
     title: "Jump Start - COZECH",
@@ -18,6 +19,7 @@ const JumpStartPage = () => {
             <Description />
             <WhatYouGet />
             <WhyFree />
+            <WhoCanApply />
         </>
     );
 };
