@@ -7,6 +7,7 @@ import WhyFree from "@/components/JumpStart/WhyFree/WhyFree";
 import WhoCanApply from "@/components/JumpStart/WhoCanApply/WhoCanApply";
 import HowProcessWork from "@/components/JumpStart/HowProcessWork/HowProcessWork";
 import JumpStartCTA from "@/components/JumpStart/JumpStartCTA/JumpStartCTA";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
     title: "Jump Start - COZECH",
@@ -24,6 +25,7 @@ const JumpStartPage = () => {
             <WhoCanApply />
             <HowProcessWork />
             <JumpStartCTA />
+            <Footer />
         </>
     );
 };
