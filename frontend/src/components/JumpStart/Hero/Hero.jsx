@@ -35,6 +35,10 @@ const Hero = () => {
             <div className="hero-bg-image">
                 <img src="/images/jump-to-start/Hero/hero-bg.svg" alt="Hero Background" />
             </div>
+
+            <div className="style-item-2"></div>
+            <div className="gradient-overlay absolute inset-0 pointer-events-none" />
+
             <div className="container relative z-10 w-full mx-auto h-full flex items-center justify-center">
                 <div className="section-wrapper w-full h-full flex flex-col items-center justify-center gap-10 md:gap-14">
                     <div className="title-section flex flex-col justify-center items-center gap-10 w-full">
