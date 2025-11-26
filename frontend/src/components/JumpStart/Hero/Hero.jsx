@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 import { ClipboardCheck } from "lucide-react";
@@ -10,7 +10,10 @@ const Hero = () => {
     const containerRef = useRef(null);
 
     useLayoutEffect(() => {
+        gsap.registerPlugin(SplitText);
+
         let ctx = gsap.context(() => {
+            // Split text for main title
             const split = new SplitText(".main-title", {
                 type: "chars",
                 charsClass: "char",
@@ -20,8 +23,100 @@ const Hero = () => {
                 char.setAttribute("data-char", char.innerText);
             });
 
-            gsap.from(split.chars, { y: 50, opacity: 0, stagger: 0.05 });
-        });
+            const tl = gsap.timeline({
+                defaults: {
+                    ease: "power3.out",
+                },
+            });
+
+            tl.from(".hero-bg-image", {
+                opacity: 0,
+                scale: 1.05,
+                duration: 1.2,
+            })
+
+                .from(
+                    ".logo",
+                    {
+                        opacity: 0,
+                        scale: 0.8,
+                        duration: 0.6,
+                    },
+                    "-=0.8"
+                )
+
+                .from(
+                    ".main-title-wrapper h3",
+                    {
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.5,
+                    },
+                    "-=0.4"
+                )
+
+                .from(
+                    split.chars,
+                    {
+                        y: 50,
+                        opacity: 0,
+                        stagger: 0.03,
+                        duration: 0.5,
+                    },
+                    "-=0.3"
+                )
+
+                .from(
+                    ".sub-title-section .subtitle",
+                    {
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.6,
+                    },
+                    "-=0.2"
+                )
+
+                .from(
+                    ".sub-title-section p",
+                    {
+                        y: 20,
+                        opacity: 0,
+                        duration: 0.5,
+                    },
+                    "-=0.4"
+                )
+
+                .from(
+                    ".cta-section .apply-btn",
+                    {
+                        y: 20,
+                        opacity: 0,
+                        duration: 0.5,
+                    },
+                    "-=0.3"
+                )
+
+                .from(
+                    ".cta-section p",
+                    {
+                        opacity: 0,
+                        duration: 0.4,
+                    },
+                    "-=0.2"
+                )
+
+                .from(
+                    ".style-1",
+                    {
+                        opacity: 0,
+                        x: 30,
+                        rotation: 10,
+                        duration: 0.6,
+                        ease: "power2.out",
+                    },
+                    "-=0.5"
+                );
+        }, containerRef);
 
         return () => ctx.revert();
     }, []);

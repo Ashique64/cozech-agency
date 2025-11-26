@@ -1,11 +1,73 @@
 "use client";
-import React from "react";
+
+import React, { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./JumpStartCTA.scss";
 
 const JumpStartCTA = () => {
+    const sectionRef = useRef(null);
+
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        let ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 75%",
+                    end: "top 25%",
+                    toggleActions: "play none none reverse",
+                },
+                defaults: {
+                    ease: "power3.out",
+                },
+            });
+
+            tl.from(".left", {
+                x: -100,
+                opacity: 0,
+                rotation: -15,
+                duration: 1,
+            })
+                .from(
+                    ".right",
+                    {
+                        x: 100,
+                        opacity: 0,
+                        rotation: 15,
+                        duration: 1,
+                    },
+                    "<"
+                )
+                .from(
+                    ".title",
+                    {
+                        y: 60,
+                        opacity: 0,
+                        scale: 0.9,
+                        duration: 0.8,
+                    },
+                    "-=0.7"
+                )
+                .from(
+                    ".description",
+                    {
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.6,
+                    },
+                    "-=0.5"
+                );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <section
             id="jump-start-cta"
+            ref={sectionRef}
             className="jump-start-cta w-full lg:min-h-screen flex flex-col items-center justify-center"
         >
             <div className="cta-container flex flex-col md:gap-6 justify-center items-center max-w-7xl w-full mx-auto">
@@ -16,7 +78,7 @@ const JumpStartCTA = () => {
                         <h2 className="title font-semibold" data-text="Ready to Jumpstart Your Website?">
                             Ready to Jumpstart Your Website?
                         </h2>
-                        <p className="description">Let’s create your online beginning.</p>
+                        <p className="description">Let's create your online beginning.</p>
                     </div>
                     <div className="button-section flex flex-col items-center gap-4">
                         <div className="buttons flex gap-4">

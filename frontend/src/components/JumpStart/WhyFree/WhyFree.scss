@@ -101,6 +101,9 @@
                             -webkit-user-select: none;
                             -moz-user-select: none;
                             -ms-user-select: none;
+                            path {
+                                fill: var(--secondary-color);
+                            }
                         }
                         .icon-style-item {
                             position: absolute;
