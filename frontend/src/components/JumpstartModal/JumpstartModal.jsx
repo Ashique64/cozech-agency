@@ -57,7 +57,6 @@ const JumpstartModal = ({ isOpen, onClose }) => {
                     .from(split.chars, { y: 50, opacity: 0, stagger: 0.03, duration: 0.5 }, "-=0.3")
                     .from(".modal-subtitle", { y: 30, opacity: 0, duration: 0.6 }, "-=0.2")
                     .from(".modal-subtitle + p", { y: 20, opacity: 0, duration: 0.5 }, "-=0.4")
-                    .from(".modal-apply-btn", { y: 20, opacity: 0, duration: 0.5 }, "-=0.3")
                     .from(".modal-cta-section p", { opacity: 0, duration: 0.4 }, "-=0.2");
 
                 if (freeTextRef.current) {
