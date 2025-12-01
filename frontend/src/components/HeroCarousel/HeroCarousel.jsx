@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -13,14 +13,27 @@ import JumpstartModal from "@/components/JumpstartModal/JumpstartModal";
 
 const HeroCarousel = () => {
     const [isModalOpen, setIsModalOpen] = useState(true);
+    const modalTimerRef = useRef(null);
 
     useEffect(() => {
-        const modalTimer = setTimeout(() => {
+        modalTimerRef.current = setTimeout(() => {
             setIsModalOpen(true);
         }, 4000);
 
-        return () => clearTimeout(modalTimer);
+        return () => {
+            if (modalTimerRef.current) {
+                clearTimeout(modalTimerRef.current);
+            }
+        };
     }, []);
+
+    const handleCloseModal = () => {
+        if (modalTimerRef.current) {
+            clearTimeout(modalTimerRef.current);
+            modalTimerRef.current = null;
+        }
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -42,7 +55,7 @@ const HeroCarousel = () => {
                 </SwiperSlide>
             </Swiper>
 
-            <JumpstartModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <JumpstartModal isOpen={isModalOpen} onClose={handleCloseModal} />
         </>
     );
 };
