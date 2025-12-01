@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useLayoutEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 import { ClipboardCheck } from "lucide-react";
 import "./Hero.scss";
 
-const Hero = () => {
+const Hero = ({ variant = "default" }) => {
     const containerRef = useRef(null);
     const freeTextRef = useRef(null);
 
@@ -183,12 +184,17 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    <div className="cta-section flex flex-col items-center gap-3">
-                        <div className="apply-btn">
-                            <button onClick={handleApplyClick} className="flex items-center gap-2">
+                    <div className="cta-section flex flex-col items-center gap-3 w-full">
+                        <div className="apply-btn w-full flex flex-col lg:flex-row justify-center items-center gap-3">
+                            <button onClick={handleApplyClick} className="flex items-center justify-center gap-2">
                                 <span>Apply now</span>
                                 <ClipboardCheck size={16} stroke="#e99132" />
                             </button>
+                            {variant === "carousel" && (
+                                <Link href="/jump-start" className="hero-btn secondary-btn">
+                                    <span>Learn More</span>
+                                </Link>
+                            )}
                         </div>
                         <p>3 spots only</p>
                     </div>

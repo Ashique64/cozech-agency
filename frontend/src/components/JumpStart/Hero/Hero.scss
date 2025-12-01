@@ -169,6 +169,35 @@
                             stroke: #0f0f0f;
                         }
                     }
+
+                    .secondary-btn {
+                        text-align: center;
+                        background: rgba(0, 0, 0, 0.2);
+                        backdrop-filter: blur(8px);
+                        -webkit-backdrop-filter: blur(8px);
+                        color: #e99132;
+                        border: 2px solid #e99132;
+                        padding: 14px 22px;
+                        border-radius: 56px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        font-family: var(--jump-start-font);
+                        cursor: pointer;
+                        text-transform: capitalize;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+                        transition: all 0.25s ease-out;
+                        transform: translateY(0);
+
+                        &:hover {
+                            background: rgba(0, 0, 0, 0);
+                            backdrop-filter: blur(0px);
+                            -webkit-backdrop-filter: blur(0px);
+
+                            transform: translateY(-3px);
+                            box-shadow: 0 8px 16px rgba(255, 170, 0, 0.35);
+                        }
+                    }
                 }
 
                 p {
@@ -343,6 +372,15 @@
                 .cta-section {
                     .apply-btn {
                         button {
+                            width: 100%;
+                            max-width: 240px;
+                            padding: 13px 20px;
+                            font-size: 14px;
+                        }
+
+                        .secondary-btn {
+                            width: 100%;
+                            max-width: 240px;
                             padding: 13px 20px;
                             font-size: 14px;
                         }
@@ -418,10 +456,19 @@
                     .apply-btn {
                         button {
                             width: 100%;
-                            max-width: 280px;
+                            max-width: 220px;
                             padding: 14px 20px;
                             font-size: 14px;
-                            border-radius: 48px;
+                            border-radius: 44px;
+                        }
+
+                        .secondary-btn {
+                            width: 100%;
+                            max-width: 220px;
+                            padding: 14px 20px;
+                            font-size: 14px;
+                            border-radius: 44px;
+                            text-align: center;
                         }
                     }
 

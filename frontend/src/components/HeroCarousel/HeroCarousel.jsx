@@ -38,7 +38,7 @@ const HeroCarousel = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <JumpStartHero />
+                    <JumpStartHero variant="carousel" />
                 </SwiperSlide>
             </Swiper>
 
