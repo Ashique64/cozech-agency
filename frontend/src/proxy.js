@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 export function proxy(request) {
-    const host = req.headers.get("host") || "";
-    const url = req.nextUrl.clone();
+    const host = request.headers.get("host") || "";
+    const url = request.nextUrl.clone();
 
     // Force www canonical host
     if (host === "cozech.com") {
