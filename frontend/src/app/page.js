@@ -14,6 +14,9 @@ import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
 import Testimonial from "@/components/Testimonial/Testimonial";
 import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
+import dynamic from "next/dynamic";
+
+const TrustpilotWidget = dynamic(() => import("@/components/TrustpilotWidget/TrustpilotWidget"), { ssr: false });
 
 export default function Home() {
     useEffect(() => {
@@ -38,6 +41,9 @@ export default function Home() {
             <Services />
             <Projects />
             <Testimonial />
+            <section style={{ padding: "10px" }}>
+                <TrustpilotWidget />
+            </section>
             <About />
             <CTA />
             <Contact />

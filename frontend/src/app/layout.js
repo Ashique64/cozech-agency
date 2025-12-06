@@ -1,5 +1,6 @@
 import { Sora } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import "./globals.css";
 
 const sora = Sora({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
                 <link rel="shortcut icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" href="/favicon.ico" />
+                <Script src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" strategy="afterInteractive" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
