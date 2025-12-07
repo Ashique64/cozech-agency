@@ -3,8 +3,10 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { User } from "lucide-react";
+import dynamic from "next/dynamic";
 import "./Testimonial.scss";
+
+const TrustpilotWidget = dynamic(() => import("../TrustpilotWidget/TrustpilotWidget"), { ssr: false });
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -252,7 +254,6 @@ const Testimonial = () => {
             document.removeEventListener("visibilitychange", onVisibilityChange);
             window.removeEventListener("resize", onResize);
 
-
             try {
                 tl && tl.kill();
             } catch (e) {}
@@ -266,61 +267,66 @@ const Testimonial = () => {
     }, []);
 
     return (
-        <section
-            ref={sectionRef}
-            id="testimonial"
-            className="testimonial w-full md:min-h-screen flex flex-col items-center justify-center"
-        >
-            <div className="testimonial-container flex flex-col gap-20 justify-center items-center max-w-7xl w-full mx-auto">
-                <div className="title-section flex flex-col md:gap-4 text-center">
-                    <h2 ref={titleRef} className="title font-semibold" data-text="Results That Speak">
-                        Results That <span>Speak</span>
-                    </h2>
-                    <p ref={descriptionRef} className="description">
-                        Here's what our clients have to say about working with us.
-                    </p>
-                </div>
+        <>
+            <section
+                ref={sectionRef}
+                id="testimonial"
+                className="testimonial w-full lg:min-h-screen flex flex-col items-center justify-center"
+            >
+                <div className="testimonial-container flex flex-col gap-20 justify-center items-center max-w-7xl w-full mx-auto">
+                    <div className="title-section flex flex-col md:gap-4 text-center">
+                        <h2 ref={titleRef} className="title font-semibold" data-text="Results That Speak">
+                            Results That <span>Speak</span>
+                        </h2>
+                        <p ref={descriptionRef} className="description">
+                            Here's what our clients have to say about working with us.
+                        </p>
+                    </div>
 
-                <div ref={carouselRef} className="carousal-section w-full">
-                    <div className="fade-overlay fade-left"></div>
-                    <div className="fade-overlay fade-right"></div>
-                    <div ref={itemContainerRef} className="items-container flex items-center gap-3 md:gap-4">
-                        {duplicatedItems.map(({ id, logo, description, name, company }, index) => (
-                            <div key={`${id}-${index}`} className="card flex flex-col gap-2 md:gap-4">
-                                <div className="item-1">
-                                    <div className="content-wrapper flex flex-col justify-between gap-1 sm:gap-2 md:gap-6">
-                                        <div className="logo ">
-                                            <img
-                                                className=""
-                                                style={{ height: id === 3 ? "30px" : "60px" }}
-                                                src={logo}
-                                                alt="Client Logo"
-                                            />
+                    <div ref={carouselRef} className="carousal-section w-full">
+                        <div className="fade-overlay fade-left"></div>
+                        <div className="fade-overlay fade-right"></div>
+                        <div ref={itemContainerRef} className="items-container flex items-center gap-3 md:gap-4">
+                            {duplicatedItems.map(({ id, logo, description, name, company }, index) => (
+                                <div key={`${id}-${index}`} className="card flex flex-col gap-2 md:gap-4">
+                                    <div className="item-1">
+                                        <div className="content-wrapper flex flex-col justify-between gap-1 sm:gap-2 md:gap-6">
+                                            <div className="logo ">
+                                                <img
+                                                    className=""
+                                                    style={{ height: id === 3 ? "30px" : "60px" }}
+                                                    src={logo}
+                                                    alt="Client Logo"
+                                                />
+                                            </div>
+                                            <p className="description">{description}</p>
                                         </div>
-                                        <p className="description">{description}</p>
+                                        <div className="arrow">
+                                            <img src="/images/testimonial/down-arrow.svg" alt="Down-arrow" />
+                                        </div>
+                                        <div className="card-bg">
+                                            <img src="/images/testimonial/card-bg.png" alt="Card-bg" />
+                                        </div>
                                     </div>
-                                    <div className="arrow">
-                                        <img src="/images/testimonial/down-arrow.svg" alt="Down-arrow" />
-                                    </div>
-                                    <div className="card-bg">
-                                        <img src="/images/testimonial/card-bg.png" alt="Card-bg" />
-                                    </div>
-                                </div>
-                                <div className="item-2 flex gap-2">
-                                    {/* <div className="profile flex items-center">
+                                    <div className="item-2 flex gap-2">
+                                        {/* <div className="profile flex items-center">
                                         <User className="user-icon" size={25} />
                                     </div> */}
-                                    <div className="text-wrapper">
-                                        <div className="name">{name}</div>
-                                        <div className="company">{company}</div>
+                                        <div className="text-wrapper">
+                                            <div className="name">{name}</div>
+                                            <div className="company">{company}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <section style={{ padding: "10px 5px", marginBottom: "40px" }}>
+                <TrustpilotWidget />
+            </section>
+        </>
     );
 };
 
