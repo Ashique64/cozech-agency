@@ -1,6 +1,7 @@
 import { Sora } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import SmoothScrolling from "../components/SmoothScrolling";
 import "./globals.css";
 
 const sora = Sora({
@@ -129,7 +130,7 @@ export default function RootLayout({ children }) {
                     </div>
                 </noscript>
 
-                {children}
+                <SmoothScrolling>{children}</SmoothScrolling>
                 <Analytics />
             </body>
         </html>
