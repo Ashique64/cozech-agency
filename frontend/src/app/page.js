@@ -41,9 +41,6 @@ export default function Home() {
             <Services />
             <Projects />
             <Testimonial />
-            {/* <section style={{ padding: "10px 5px" }}>
-                <TrustpilotWidget />
-            </section> */}
             <About />
             <CTA />
             <Contact />

@@ -22,7 +22,7 @@ const projectsItems = [
     description:
       "Developed a robust informational website detailing the end-to-end support for studying in Germany, showcasing services from Course Selection and Visa Processing to Settlement Support.",
     imageUrl: "/images/projects/project-2.webp",
-    link: "https://edufam-consultancy.vercel.app/",
+    link: "https://edufam.in/",
   },
   {
     id: 3,
